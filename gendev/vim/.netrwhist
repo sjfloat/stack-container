@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/stevej/work/aem/ops/ansible/templates/apache/conf'
+let g:netrw_dirhist_2='/Users/stevej/work/aem/ops/ansible/roles/apache/tasks'
+let g:netrw_dirhist_3='/Users/stevej/work/aem/ops/ansible'
+let g:netrw_dirhist_4='/Users/stevej/work/aem/ops/ansible/associateVars'
+let g:netrw_dirhist_5='/Users/stevej/work/aem/ops/ansible/externalwebconf'
+let g:netrw_dirhist_6='/Users/stevej/work/aem/ops/scripts/verify'
+let g:netrw_dirhist_7='/Users/stevej/Documents'
