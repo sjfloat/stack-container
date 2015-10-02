@@ -1,20 +1,22 @@
 
-from debian:jessie
+from gendev
 
+user root
 
-run apt-get update && apt-get install wget -y
+#
+# get stack
+#
 run wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/debian/fpco.key | apt-key add -
 run echo 'deb http://download.fpcomplete.com/debian/jessie stable main'| tee /etc/apt/sources.list.d/fpco.list
 run apt-get update && apt-get install stack -y
 
 env STACKUSER steve
-run adduser $STACKUSER
 user $STACKUSER
 
 workdir /home/$STACKUSER
-run stack new default simple
+run stack new initial simple
 
-workdir default
+workdir initial
 run stack setup
 
 cmd /bin/bash
