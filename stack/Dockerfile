@@ -11,6 +11,8 @@ user root
 run wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/debian/fpco.key | apt-key add -
 run echo 'deb http://download.fpcomplete.com/debian/jessie stable main'| tee /etc/apt/sources.list.d/fpco.list
 run apt-get update && apt-get install stack -y
+run apt-get clean
+run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 env USER steve
 
