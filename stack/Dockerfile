@@ -12,10 +12,14 @@ run wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/debian/fpco.key
 run echo 'deb http://download.fpcomplete.com/debian/jessie stable main'| tee /etc/apt/sources.list.d/fpco.list
 run apt-get update && apt-get install stack -y
 
-env STACKUSER steve
-user $STACKUSER
+env USER steve
 
-workdir /home/$STACKUSER
+env HOME /home/$USER
+add haskeline $HOME/.haskeline
+run chown -R ${USER}: $HOME
+
+user $USER
+workdir $HOME
 run stack new initial simple
 
 workdir initial
