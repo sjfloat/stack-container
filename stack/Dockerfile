@@ -27,4 +27,7 @@ run stack new initial simple
 workdir initial
 run stack setup
 
+# This could be less hacky...
+run echo "setenv PATH `stack path | grep '^bin-path' | cut -f2- -d:`" >> ~/.cshrc
+
 cmd /bin/tcsh
