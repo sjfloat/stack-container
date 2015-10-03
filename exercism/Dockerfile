@@ -10,6 +10,7 @@ run wget https://github.com/exercism/cli/releases/download/v2.2.1/exercism-linux
 run tar xvf exercism-linux-64bit.tgz
 run chmod +x exercism
 run mv exercism /usr/local/bin/
+run rm -rf /tmp/*
 
 workdir $HOME
 user $USER
