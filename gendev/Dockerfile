@@ -3,21 +3,23 @@ from debian:jessie
 
 env DEBIAN_FRONTEND noninteractive
 
-run apt-get update 
-# combine these when the list stabilizes
-run apt-get install -y ctags
-run apt-get install -y curl
-run apt-get install -y git
-run apt-get install -y htop
-run apt-get install -y make
-run apt-get install -y man
-run apt-get install -y sudo
-run apt-get install -y tcsh
-run apt-get install -y tmux
-run apt-get install -y tree
-run apt-get install -y vim
-run apt-get install -y vim-doc
-run apt-get install -y wget
+run apt-get update && apt-get install -y \
+    ctags \
+    curl \
+    git \
+    htop \
+    make \
+    man \
+    sudo \
+    tcsh \
+    tmux \
+    tree \
+    vim \
+    vim-doc \
+    wget
+
+run apt-get clean
+run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 env USER steve
 run adduser $USER
