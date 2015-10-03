@@ -15,3 +15,9 @@ run rm -rf /tmp/*
 workdir $HOME
 user $USER
 
+run tcsh -c "cabal update"
+run tcsh -c "cabal install HUnit"
+
+run mkdir $HOME/exercism
+workdir $HOME/exercism
+
