@@ -11,15 +11,13 @@ run apt-get install -y git
 run apt-get install -y htop
 run apt-get install -y make
 run apt-get install -y man
+run apt-get install -y sudo
 run apt-get install -y tcsh
 run apt-get install -y tmux
 run apt-get install -y tree
 run apt-get install -y vim
 run apt-get install -y vim-doc
 run apt-get install -y wget
-
-
-# sudo, tree, htop
 
 env DEVUSER steve
 run adduser $DEVUSER
@@ -41,6 +39,8 @@ env SHELL /bin/tcsh
 user root
 run chown -R ${DEVUSER}: $HOME
 run chsh -s $SHELL $DEVUSER
+
+run echo "$DEVUSER  ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$DEVUSER
 
 user $DEVUSER
 
