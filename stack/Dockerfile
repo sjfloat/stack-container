@@ -21,4 +21,4 @@ run stack new initial simple
 workdir initial
 run stack setup
 
-cmd /bin/bash
+cmd /bin/tcsh
