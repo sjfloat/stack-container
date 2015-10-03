@@ -1,6 +1,8 @@
 
 from debian:jessie
 
+env DEBIAN_FRONTEND noninteractive
+
 run apt-get update 
 # combine these when the list stabilizes
 run apt-get install -y ctags
@@ -23,7 +25,7 @@ env DEVUSER steve
 run adduser $DEVUSER
 user $DEVUSER
 
-ENV HOME /home/$DEVUSER
+env HOME /home/$DEVUSER
 workdir $HOME
 
 add vimrc $HOME/.vimrc
@@ -34,9 +36,12 @@ add exrc $HOME/.exrc
 add inputrc $HOME/.inputrc
 add tmux.conf $HOME/.tmux.conf
 
+env SHELL /bin/tcsh
+
 user root
 run chown -R ${DEVUSER}: $HOME
+run chsh -s $SHELL $DEVUSER
 
 user $DEVUSER
 
-cmd /bin/bash
+cmd $SHELL

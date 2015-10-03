@@ -1,6 +1,8 @@
 
 from gendev
 
+env DEBIAN_FRONTEND noninteractive
+
 user root
 
 #

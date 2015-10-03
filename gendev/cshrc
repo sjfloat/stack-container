@@ -24,7 +24,6 @@ setenv EDITOR vi
 #setenv VISUAL "gvim -f"
 setenv XMLLINT_INDENT "    "
 
-echo $DISPLAY | grep org.macosforge.xquartz > /dev/null
 if ($status == 0) then
     setenv VISUAL "gvim -f"
 else
