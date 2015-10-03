@@ -19,11 +19,11 @@ run apt-get install -y vim
 run apt-get install -y vim-doc
 run apt-get install -y wget
 
-env DEVUSER steve
-run adduser $DEVUSER
-user $DEVUSER
+env USER steve
+run adduser $USER
+user $USER
 
-env HOME /home/$DEVUSER
+env HOME /home/$USER
 workdir $HOME
 
 add vimrc $HOME/.vimrc
@@ -37,11 +37,11 @@ add tmux.conf $HOME/.tmux.conf
 env SHELL /bin/tcsh
 
 user root
-run chown -R ${DEVUSER}: $HOME
-run chsh -s $SHELL $DEVUSER
+run chown -R ${USER}: $HOME
+run chsh -s $SHELL $USER
 
-run echo "$DEVUSER  ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$DEVUSER
+run echo "$USER  ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER
 
-user $DEVUSER
+user $USER
 
 cmd $SHELL
