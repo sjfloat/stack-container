@@ -27,6 +27,9 @@ workdir $HOME
 run stack setup
 run stack install cabal-install
 
+add tmux.conf.patch $HOME/tmux.conf.patch 
+run patch $HOME/.tmux.conf tmux.conf.patch && rm tmux.conf.patch 
+
 # This could be less hacky...
 run echo "setenv PATH $HOME/.local/bin:`stack path | grep '^bin-path' | cut -f2- -d' '`" >> ~/.cshrc
 
