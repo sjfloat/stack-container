@@ -28,6 +28,6 @@ run stack setup
 run stack install cabal-install
 
 # This could be less hacky...
-run echo "setenv PATH `stack path | grep '^bin-path' | cut -f2- -d:`" >> ~/.cshrc
+run echo "setenv PATH $HOME/.local/bin:`stack path | grep '^bin-path' | cut -f2- -d' '`" >> ~/.cshrc
 
 cmd /bin/tcsh
