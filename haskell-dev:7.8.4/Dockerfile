@@ -19,6 +19,7 @@ run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 env USER steve
 
 env HOME /home/$USER
+add stack.yaml $HOME/.stack/global/stack.yaml
 add haskeline $HOME/.haskeline
 run chown -R ${USER}: $HOME
 
