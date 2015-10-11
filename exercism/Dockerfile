@@ -1,5 +1,5 @@
 
-from stack
+from haskell-dev
 
 env DEBIAN_FRONTEND noninteractive
 

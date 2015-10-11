@@ -1,5 +1,5 @@
 
-from gendev
+from gen-dev
 
 env DEBIAN_FRONTEND noninteractive
 
