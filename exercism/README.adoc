@@ -1,0 +1,6 @@
+= Exercism
+
+* Get your API key here: http://exercism.io/account
+* run `exercism configure --key=YOUR_API_KEY`
+* run `exercism fetch`
+
