@@ -18,6 +18,8 @@ run apt-get update && apt-get install -y \
     vim-doc \
     wget
 
+run ln -s /usr/lib/git-core/git-* /usr/local/bin/ 
+
 run apt-get clean
 run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -35,6 +37,7 @@ add cshrc $HOME/.cshrc
 add exrc $HOME/.exrc
 add inputrc $HOME/.inputrc
 add tmux.conf $HOME/.tmux.conf
+
 
 env SHELL /bin/tcsh
 

@@ -1,4 +1,0 @@
-15a16,18
-> # Work around bug which breaks ghci
-> set escape-time 100
-> 

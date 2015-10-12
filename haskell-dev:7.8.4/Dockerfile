@@ -1,5 +1,5 @@
 
-from gendev
+from gen-dev
 
 env DEBIAN_FRONTEND noninteractive
 
@@ -19,6 +19,7 @@ run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 env USER steve
 
 env HOME /home/$USER
+add stack.yaml $HOME/.stack/global/stack.yaml
 add haskeline $HOME/.haskeline
 run chown -R ${USER}: $HOME
 
@@ -27,10 +28,10 @@ workdir $HOME
 run stack setup
 run stack install cabal-install
 
-add tmux.conf.patch $HOME/tmux.conf.patch 
-run patch $HOME/.tmux.conf tmux.conf.patch && rm tmux.conf.patch 
-
 # This could be less hacky...
-run echo "setenv PATH `stack path | grep '^bin-path' | cut -f2- -d:`" >> ~/.cshrc
+run echo "setenv PATH $HOME/.local/bin:`stack path | grep '^bin-path' | cut -f2- -d' '`" >> ~/.cshrc
+
+run tcsh -c "cabal update"
+run tcsh -c "cabal install HUnit"
 
 cmd /bin/tcsh
