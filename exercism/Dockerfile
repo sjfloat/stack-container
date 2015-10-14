@@ -15,7 +15,4 @@ run rm -rf /tmp/*
 workdir $HOME
 user $USER
 
-run mkdir $HOME/exercism
-workdir $HOME/exercism
-
-add README.adoc $HOME/exercism/
+add README.adoc $HOME/
