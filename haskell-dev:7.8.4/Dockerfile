@@ -33,5 +33,6 @@ run echo "setenv PATH $HOME/.local/bin:`stack path | grep '^bin-path' | cut -f2-
 
 run tcsh -c "cabal update"
 run tcsh -c "cabal install HUnit"
+run tcsh -c "cabal install parsec"
 
 cmd /bin/tcsh
