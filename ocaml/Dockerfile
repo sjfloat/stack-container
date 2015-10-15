@@ -34,6 +34,6 @@ user root
 run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 user $USER
 
-opam config env >> ~/.cshrc
+run opam config env >> ~/.cshrc
 
 cmd /bin/tcsh
