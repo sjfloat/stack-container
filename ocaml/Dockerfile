@@ -19,7 +19,6 @@ run apt-get update && apt-get install -y \
     m4
 
 run apt-get clean
-run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 env USER steve
 env HOME /home/$USER
@@ -29,7 +28,10 @@ workdir $HOME
 run opam init -y > opam-init.out 2>&1
 
 run opam install -y merlin
-
-#run chown -R ${USER}: $HOME
+add vim.patch /tmp/vim.patch
+run patch ~/.vimrc /tmp/vim.patch
+user root
+run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+user $USER
 
 cmd /bin/tcsh
