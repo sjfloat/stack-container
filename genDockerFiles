@@ -3,6 +3,7 @@
 use warnings;
 use strict;
 use File::Copy;
+use Data::Dumper;
 
 my $data = {
     templates => [
@@ -13,8 +14,6 @@ my $data = {
     ]
 };
 
-use Data::Dumper;
-
 foreach my $template (@{$data->{templates}}) {
     foreach my $base (@{$template->{base}}) {
         generate_docker_file($base, $template->{name});
@@ -23,7 +22,6 @@ foreach my $template (@{$data->{templates}}) {
 
 sub generate_docker_file {
     my $base = shift;
-    #my $name = "$base-$short_name";
     my $template = shift;
     my $name = "$base-$template";
 
