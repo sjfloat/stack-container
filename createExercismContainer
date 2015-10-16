@@ -1,0 +1,10 @@
+#!/bin/sh
+
+name=$1
+
+cleanname=`echo $name | perl -pe 's/\:[\d\.]*//'`
+
+docker create -it \
+    --name $cleanname \
+    -v `pwd`/exercism-work:/home/steve/exercism \
+    $name
