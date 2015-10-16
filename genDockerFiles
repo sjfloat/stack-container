@@ -1,0 +1,45 @@
+#!/usr/bin/perl 
+
+use warnings;
+use strict;
+use File::Copy;
+
+my $data = {
+    templates => [
+        {
+            name => 'exercism',
+            base => [qw(haskell-dev:7.8.4 ocaml mirage)]
+        }
+    ]
+};
+
+use Data::Dumper;
+
+foreach my $template (@{$data->{templates}}) {
+    foreach my $base (@{$template->{base}}) {
+        generate_docker_file($base, $template->{name});
+    }
+}
+
+sub generate_docker_file {
+    my $base = shift;
+    #my $name = "$base-$short_name";
+    my $template = shift;
+    my $name = "$base-$template";
+
+    my $template_file_name = "templates/$template/Dockerfile";
+    print $name, "\n";
+    mkdir $name;
+
+    system("cp $template/* $name/");
+
+    open my $OUT, ">", "$name/Dockerfile" or die $!;
+    open my $TEMPLATE, "<", $template_file_name or die "Can't open $template_file_name: $!";
+    while (<$TEMPLATE>) {
+        s/{{base}}/$base/g;
+        print $OUT $_;
+    }
+    close $TEMPLATE;
+    close $OUT;
+
+}

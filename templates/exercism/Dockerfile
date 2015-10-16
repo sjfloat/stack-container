@@ -1,5 +1,5 @@
 
-from haskell-dev:7.8.4
+from {{base}}
 
 env DEBIAN_FRONTEND noninteractive
 
