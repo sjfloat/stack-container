@@ -9,7 +9,7 @@ my $data = {
     templates => [
         {
             name => 'exercism',
-            base => [qw(haskell-dev:7.8.4 ocaml mirage)]
+            base => [qw(haskell_7.8.4-dev ocaml mirage)]
         }
     ]
 };
