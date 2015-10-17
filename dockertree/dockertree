@@ -1,0 +1,18 @@
+#!/usr/bin/perl -n
+
+
+BEGIN {
+print <<EOF;
+
+digraph dockerfiles {
+
+EOF
+}
+
+/^\.+\/(.*)\/Dockerfile:from (.*)/;
+print qq(    "$2" -> "$1";\n);
+
+END {
+print qq(}\n);
+}
+
