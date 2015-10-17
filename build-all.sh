@@ -1,6 +1,6 @@
 #!/bin/sh
 
-clist="gen-dev haskell_7.8.4-dev ocaml mirage haskell_7.8.4-dev-exercism ocaml-exercism mirage-exercism"
+clist="gen-dev haskell_7.8.4 ocaml mirage haskell_7.8.4-exercism ocaml-exercism mirage-exercism"
 
 for i in $clist; do
     echo
