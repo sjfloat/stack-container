@@ -12,3 +12,4 @@ run apt-get update && apt-get install -y \
 user $USER
 run opam install mirage -y -v > opam-install-mirage.out 2>&1
 
+add README.adoc $HOME/README.adoc
