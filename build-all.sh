@@ -10,7 +10,7 @@ for i in $clist; do
     if [ `uname -s` = 'Darwin' ]; then
         vgv $cmd
     else
-        script -c "$cmd" typscript-$i.txt
+        script -c "$cmd" typescript-$i.txt
     fi
 done
 
