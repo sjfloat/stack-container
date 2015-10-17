@@ -27,6 +27,7 @@ user $USER
 workdir $HOME
 run opam init -y > opam-init.out 2>&1
 
+run opam install -y core
 run opam install -y merlin
 add vim.patch /tmp/vim.patch
 run patch ~/.vimrc /tmp/vim.patch
