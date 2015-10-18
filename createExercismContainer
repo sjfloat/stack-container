@@ -2,9 +2,21 @@
 
 name=$1
 
-cleanname=`echo $name | perl -pe 's/\:[\d\.]*//'`
+echo $name | grep exercism > /dev/null
+
+if [ $? = 0 ]; then
+    hvolume=exercism-work
+    dir=exercism
+else
+    hvolume=${name}-work
+    dir=$hvolume
+    if [ ! -d $hvolume ]; then
+        mkdir $hvolume
+    fi
+fi
+
 
 docker create -it \
-    --name $cleanname \
-    -v `pwd`/exercism-work:/home/steve/exercism \
+    --name $name \
+    -v `pwd`/${hvolume}:/home/steve/${dir} \
     $name
