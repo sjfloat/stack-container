@@ -20,7 +20,6 @@ run apt-get update && apt-get install -y \
 
 run apt-get clean
 
-env USER steve
 env HOME /home/$USER
 
 user $USER
