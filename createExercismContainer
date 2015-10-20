@@ -1,6 +1,7 @@
 #!/bin/sh
 
 name=$1
+user=`docker inspect -f '{{.Config.User}}' $name`
 
 echo $name | grep exercism > /dev/null
 
@@ -18,5 +19,5 @@ fi
 
 docker create -it \
     --name $name \
-    -v `pwd`/${hvolume}:/home/steve/${dir} \
+    -v `pwd`/${hvolume}:/home/${user}/${dir} \
     $name
