@@ -1,11 +1,5 @@
 # .cshrc
 
-#stty erase "^?" kill "^U" intr "^C" eof "^D"
-#setenv TERM ansi
-
-#setenv COLUMNS 100
-#setenv MANWIDTH 80      # for enscript
-
 
 if (-r /opt/local/share/terminfo) then
     setenv TERMINFO /opt/local/share/terminfo
@@ -18,65 +12,12 @@ setenv LANG en_US.UTF-8
 
 setenv PAGER less
 setenv LESS "-RiX"
-setenv CC /usr/bin/cc
-setenv EDITOR vi
-#setenv SVN_EDITOR "gvim -f"
-#setenv VISUAL "gvim -f"
-setenv XMLLINT_INDENT "    "
+setenv EDITOR vim
 
-if ($status == 0) then
-    setenv VISUAL "gvim -f"
-else
-    setenv VISUAL "urxvt -e vim"
-endif
-
-set activemq_path=""
-set grails_path=""
-set ROO_PATH=""
-if (-r ~/.csh/java) then
-    source ~/.csh/java
-endif
-
-set ANDROID_PATH=""
-if (-r ~/.csh/andriod) then
-    source ~/.csh/andriod
-endif
-
-set go_path=""
-if (-r ~/.csh/go.csh) then
-    source ~/.csh/go.csh
-endif
-
-set packer_path=""
-if (-r ~/.csh/packer.csh) then
-    source ~/.csh/packer.csh
-endif
-
-# User specific aliases and functions
-#setenv PERL5LIB $HOME/local/lib/site_perl/5.8.3
-#setenv MANPATH "$HOME/local/man/:`cat /etc/MANPATH`"
-#setenv PATH "$HOME/local/bin/:/opt/hpws/apache/bin:`cat /etc/PATH`"
-
-setenv GHC_VERSION 7.10.2
-set ghc_path=":$HOME/.stack/programs/x86_64-osx/ghc-${GHC_VERSION}/bin"
-
-setenv PATH .:$HOME/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin:/opt/local/bin:/usr/games:/usr/lib/xscreensaver:/opt/firefox${grails_path}${ANDROID_PATH}${ROO_PATH}${activemq_path}${go_path}${packer_path}${ghc_path}
-
-#setenv MANPATH "`manpath`"
-
-limit coredumpsize 0
-
-setenv TRELLO_DEVELOPER_PUBLIC_KEY 210e7ebad2f1e659f838626dec52c865
-setenv TRELLO_MEMBER_TOKEN cbf45c7228745ae12cf632f96f91f9905f2a5a533c1b8587f79cf43adcfc56ef
 
 #
 #    ls aliases
-
-if (`uname` == 'Darwin') then
-    alias ls     'ls -FxG'
-else
-    alias ls     'ls -Fx --color=auto'
-endif
+alias ls     'ls -Fx --color=auto'
 alias ldirs  'find . \! -name "." -prune -type d -print | less'
 alias lfils  'find . \! -name "." -prune -type f -print | less'
 alias lexe   'ls -1 | grep "*"'
@@ -108,16 +49,14 @@ alias rcpbg      '( \!* ) < /dev/null &'   # for preventing stopped jobs
 alias unbu        'cp \!^.bak \!^'         #
 #
 alias histfilehere 'set histfile=`pwd`/history'
-alias treenocvs 'tree -I CVS'
 #
 setenv GREP_OPTIONS '--directories=skip'
 #
 cd .
-umask 022
+umask 002
 #
 #    useful settings 
 #
-set mail = 600
 set history = 1000
 set notify
 set ignoreeof
@@ -125,24 +64,10 @@ set complete
 set list
 set filec
 
-# cvs aliases
-alias cvs_show_unknown 'cvs -qn upd | grep "^? " | cut -f2 -d" "'
-alias cvs_show_changed 'cvs -qn upd | grep "^M " | cut -f2 -d" "'
-alias cvs_show_added   'cvs -qn upd | grep "^A " | cut -f2 -d" "'
-alias cvs_show_removed 'cvs -qn upd | grep "^R " | cut -f2 -d" "'
-alias cvs_show_pending 'cvs -qn upd | grep -v "^? " | cut -f2 -d" "'
-
 # git aliases
 alias gsb git-show-branch
 
-# particular things
-alias plt prove -l t
-alias pt  perltidy -st
-
-alias ccopts perl -MExtUtils::Embed -e ccopts
-alias ldopts perl -MExtUtils::Embed -e ldopts
-
-#         set this for all shells
+# set this for all shells
 set noclobber
 
 set savehist
@@ -150,11 +75,3 @@ set savehist
 if ( $?HISTFILE ) then
     set histfile="$HISTFILE"
 endif
-
-alias mz mutt -Z
-alias my mutt -y
-alias mutf mutt -f
-
-alias vbm VBoxManage
-
-alias pt perltidy
