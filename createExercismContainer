@@ -1,7 +1,9 @@
 #!/bin/sh
 
+. inspect.sh
+
 name=$1
-user=`docker inspect -f '{{.Config.User}}' $name`
+user=`get_user $name`
 
 echo $name | grep exercism > /dev/null
 
