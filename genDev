@@ -1,0 +1,14 @@
+#!/bin/sh
+
+user=$1
+
+if [ -z $user ]; then
+    if [ ! -z $DOCKER_USER ]; then
+        user=$DOCKER_USER
+    else
+        user=`whoami`
+    fi
+fi
+
+perl -pe "s/{{user}}/$user/g" < gen-dev/Dockerfile.tmpl > gen-dev/Dockerfile
+

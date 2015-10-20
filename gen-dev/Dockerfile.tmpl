@@ -1,3 +1,4 @@
+# vim:ft=dockerfile
 
 from debian:jessie
 
@@ -23,7 +24,7 @@ run ln -s /usr/lib/git-core/git-* /usr/local/bin/
 run apt-get clean
 run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-env USER steve
+env USER {{user}}
 run adduser $USER
 user $USER
 
