@@ -19,6 +19,7 @@ else
 fi
 
 
+set -x
 docker create -it \
     --name $name \
     -v `pwd`/${hvolume}:/home/${user}/${dir} \
