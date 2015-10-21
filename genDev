@@ -1,6 +1,7 @@
 #!/bin/sh
 
 user=$1
+shell=$2
 
 if [ -z $user ]; then
     if [ ! -z $DOCKER_USER ]; then
@@ -10,5 +11,15 @@ if [ -z $user ]; then
     fi
 fi
 
-perl -pe "s/{{user}}/$user/g" < gen-dev/Dockerfile.tmpl > gen-dev/Dockerfile
+if [ -z $shell ]; then
+    if [ ! -z $DOCKER_SHELL ]; then
+        shell=$DOCKER_SHELL
+    elif [ ! -z $SHELL ]; then
+        shell=$SHELL
+    else
+        shell=/bin/sh
+    fi
+fi
+
+perl -pe "s/{{user}}/$user/g; s#{{shell}}#$shell#g" < gen-dev/Dockerfile.tmpl > gen-dev/Dockerfile
 

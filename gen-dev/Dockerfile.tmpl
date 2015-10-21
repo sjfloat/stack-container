@@ -43,8 +43,7 @@ copy inputrc $HOME/.inputrc
 copy tmux.conf $HOME/.tmux.conf
 copy path-to-setup /usr/bin/path-to-setup
 
-
-env SHELL /bin/tcsh
+env SHELL {{shell}}
 
 user root
 run chown -R ${USER}: $HOME
