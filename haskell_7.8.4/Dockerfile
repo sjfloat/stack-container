@@ -25,12 +25,10 @@ user $USER
 workdir $HOME
 run stack setup
 run stack install cabal-install
+run stack path --bin-path | path-to-setup stack
 
-# This could be less hacky...
-run echo "setenv PATH $HOME/.local/bin:`stack path | grep '^bin-path' | cut -f2- -d' '`" >> ~/.cshrc
-
-run tcsh -c "cabal update && cabal install \
+run $SHELL -c "cabal update && cabal install \
     HUnit \
     parsec"
 
-cmd /bin/tcsh
+cmd $SHELL
