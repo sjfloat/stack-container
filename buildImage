@@ -1,10 +1,66 @@
-#!/bin/sh -x
+#!/usr/bin/perl -s
 
-name=`echo $1 | tr -d '/'`
+use Data::Dumper;
 
-if [ ! -z $2 ]; then
-    tag=:$2
-fi
+my $user = $u;
 
-docker build -t $name $name
-#docker build -t sjfloat/${name}$tag $name
+use warnings;
+use strict;
+
+my $config = {
+    'sj' => { 
+        shell => '/bin/tcsh'
+    }
+};
+
+my $imagename = shift @ARGV;
+
+die "Must specify imagename" if ! defined $imagename;
+
+#warn $imagename;
+
+my $dirname = $imagename;
+
+if (! defined $user) {
+    $user = 'user';
+}
+else {
+    $imagename = $user . '-' . $imagename;
+}
+#warn $user;
+#warn $imagename;
+
+my $shell = $config->{$user}{shell} || '/bin/bash';
+
+#warn $shell;
+
+my $dotfiles = "dotfiles.$user";
+#warn $dotfiles;
+
+if (! -d "$dirname/$dotfiles") {
+    die "$dotfiles does not exist";
+}
+unlink "$dirname/dotfiles";
+symlink $dotfiles, "$dirname/dotfiles";
+
+open my $docker_file_template, "<", "$dirname/Dockerfile.tmpl" or die $!;
+open my $docker_file, ">", "$dirname/Dockerfile" or die $!;
+
+while (<$docker_file_template>) {
+    s/{{user}}/$user/g;
+    s#{{shell}}#$shell#g;
+    print $docker_file $_;
+}
+
+close $docker_file_template;
+close $docker_file;
+
+##if [ ! -z $3 ]; then
+##    tag=:$3
+##fi
+
+my $cmd = qq(docker build -t $imagename $dirname);
+warn $cmd;
+system($cmd);
+
+##docker build -t sjfloat/${name}$tag $name
