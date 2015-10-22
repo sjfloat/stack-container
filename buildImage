@@ -14,10 +14,7 @@ my $config = {
 };
 
 my $imagename = shift @ARGV;
-
 die "Must specify imagename" if ! defined $imagename;
-
-#warn $imagename;
 
 my $dirname = $imagename;
 
@@ -27,24 +24,16 @@ if (! defined $user) {
 else {
     $imagename = $user . '-' . $imagename;
 }
-#warn $user;
-#warn $imagename;
 
 my $shell = $config->{$user}{shell} || '/bin/bash';
-
-#warn $shell;
-
 my $dotfiles = "dotfiles.$user";
-#warn $dotfiles;
 
 if (! -d "$dirname/$dotfiles") {
     die "$dotfiles does not exist";
 }
-#unlink "$dirname/dotfiles";
-#symlink $dotfiles, "$dirname/dotfiles";
 
 open my $docker_file_template, "<", "$dirname/Dockerfile.tmpl" or die $!;
-open my $docker_file, ">", "$dirname/Dockerfile" or die $!;
+open my $docker_file,          ">", "$dirname/Dockerfile"      or die $!;
 
 while (<$docker_file_template>) {
     s/{{user}}/$user/g;
@@ -55,6 +44,9 @@ while (<$docker_file_template>) {
 close $docker_file_template;
 close $docker_file;
 
+#
+# TODO implement tagging
+#
 ##if [ ! -z $3 ]; then
 ##    tag=:$3
 ##fi
