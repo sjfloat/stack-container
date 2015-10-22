@@ -32,7 +32,7 @@ env HOME /home/$USER
 workdir $HOME
 
 run rm -rf $HOME/*
-copy dotfiles $HOME/
+copy dotfiles.{{user}} $HOME/
 
 copy path-to-setup /usr/bin/path-to-setup
 

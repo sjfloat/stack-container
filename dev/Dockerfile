@@ -24,7 +24,7 @@ run ln -s /usr/lib/git-core/git-* /usr/local/bin/
 run apt-get clean
 run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-env USER sj
+env USER user
 run adduser $USER
 user $USER
 
@@ -32,11 +32,11 @@ env HOME /home/$USER
 workdir $HOME
 
 run rm -rf $HOME/*
-copy dotfiles $HOME/
+copy dotfiles.user $HOME/
 
 copy path-to-setup /usr/bin/path-to-setup
 
-env SHELL /bin/tcsh
+env SHELL /bin/bash
 
 user root
 run chown -R ${USER}: $HOME

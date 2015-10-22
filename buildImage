@@ -40,8 +40,8 @@ my $dotfiles = "dotfiles.$user";
 if (! -d "$dirname/$dotfiles") {
     die "$dotfiles does not exist";
 }
-unlink "$dirname/dotfiles";
-symlink $dotfiles, "$dirname/dotfiles";
+#unlink "$dirname/dotfiles";
+#symlink $dotfiles, "$dirname/dotfiles";
 
 open my $docker_file_template, "<", "$dirname/Dockerfile.tmpl" or die $!;
 open my $docker_file, ">", "$dirname/Dockerfile" or die $!;
