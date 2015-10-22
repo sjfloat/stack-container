@@ -6,4 +6,5 @@ if [ ! -z $2 ]; then
     tag=:$2
 fi
 
-docker build -t sjfloat/${name}$tag $name
+docker build -t $name $name
+#docker build -t sjfloat/${name}$tag $name
