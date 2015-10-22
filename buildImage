@@ -59,8 +59,15 @@ close $docker_file;
 ##    tag=:$3
 ##fi
 
+#
+# TODO parameterize "from" lines in dependent docker files
+#
 my $cmd = qq(docker build -t $imagename $dirname);
 warn $cmd;
 system($cmd);
 
+
+# 
+# TODO add repo name
+#
 ##docker build -t sjfloat/${name}$tag $name
