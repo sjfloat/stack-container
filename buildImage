@@ -54,12 +54,7 @@ close $docker_file;
 #
 # TODO parameterize "from" lines in dependent docker files
 #
-my $cmd = qq(docker build -t $imagename $dirname);
+my $cmd = qq(docker build -t sjfloat/$imagename $dirname);
 warn $cmd;
 system($cmd);
 
-
-# 
-# TODO add repo name
-#
-##docker build -t sjfloat/${name}$tag $name
